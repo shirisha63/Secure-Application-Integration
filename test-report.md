@@ -25,10 +25,10 @@ npm test
 
 | Check | Expected result | Status |
 |---|---|---|
-| Load internship page | Loading state then internship cards | Pending |
-| Stop API and refresh frontend | Failure message and Retry button | Pending |
-| Click Apply Now | Application form opens | Pending |
-| Submit invalid email/phone | Client-side validation message | Pending |
-| Submit valid form | Success message and application ID | Pending |
+| Load internship page | Loading state then internship cards | Passed |
+| Stop API and refresh frontend | Failure message and Retry button | Passed |
+| Click Apply Now | Application form opens | Passed |
+| Submit invalid email/phone | Client-side validation message | Passed |
+| Submit valid form | Success message and application ID | Passed |
 
 **Note:** Do not mark these as passed until you run the automated tests and browser checks. Add terminal output or screenshots here before submission.
