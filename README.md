@@ -1,114 +1,153 @@
-# InternHub — Secure Application Integration (Task 3)
+# Secure Application Integration – Internship Portal
 
-This repository combines the internship-board frontend with the Express + SQLite API and adds secure application submission.
+## Project Overview
 
-## Project structure
+InternHub is an internship portal that connects a frontend application with a backend API. It allows users to view internship opportunities, search and filter internships, and submit applications securely.
+
+## Objectives
+
+* Integrate frontend with backend API.
+* Display internship data dynamically.
+* Implement a secure application form.
+* Validate user inputs on both frontend and backend.
+* Handle loading, error, retry, and failure states.
+* Protect the API using security features.
+
+## Technologies Used
+
+* HTML
+* CSS
+* JavaScript
+* Node.js
+* Express.js
+* SQLite
+* Helmet
+* CORS
+* Express Rate Limit
+
+## Features
+
+* Dynamic internship listings from API.
+* Search internships by role or company.
+* Filter internships by domain.
+* Application form with input validation.
+* Loading and error messages.
+* Retry functionality.
+* Secure application submission.
+* Backend validation and database storage.
+
+## Security Features
+
+| Security Feature       | Description                                |
+| ---------------------- | ------------------------------------------ |
+| Helmet                 | Provides HTTP security headers.            |
+| Rate Limiting          | Limits excessive API requests.             |
+| CORS                   | Controls permitted frontend origins.       |
+| Server-side Validation | Validates application data on the backend. |
+| Parameterized SQL      | Helps prevent SQL injection.               |
+| Error Handling         | Handles errors with appropriate responses. |
+
+## Project Structure
 
 ```text
 internship-portal-task3/
-├── frontend/                 # HTML, CSS, browser JavaScript
-└── backend/                  # Express API, SQLite, API tests
-    ├── server.js
-    ├── database.js
-    ├── seed.js
-    └── tests/api.test.js
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── backend/
+│   ├── server.js
+│   ├── database.js
+│   ├── seed.js
+│   ├── package.json
+│   └── tests/
+│
+└── README.md
 ```
 
-## Requirements
+## Installation and Setup
 
-- Node.js 18+ (recommended current LTS)
-- npm
-- VS Code Live Server extension (or another static web server)
-
-## Run locally
-
-### 1. Install backend dependencies
+### 1. Clone the Repository
 
 ```bash
-cd backend
+git clone https://github.com/shirisha63/Secure-Application-Integration.git
+```
+
+### 2. Navigate to Backend
+
+```bash
+cd Secure-Application-Integration/backend
+```
+
+### 3. Install Dependencies
+
+```bash
 npm install
 ```
 
-### 2. Add sample internships (run once; safe to rerun)
-
-```bash
-npm run seed
-```
-
-### 3. Start the API
+### 4. Start the Backend Server
 
 ```bash
 npm start
 ```
 
-API runs at `http://localhost:5000`. Quick check: open `http://localhost:5000/`.
+The backend server runs at:
 
-### 4. Start the frontend
+`http://localhost:5000`
 
-Open `frontend/index.html` with VS Code Live Server. It normally runs at `http://localhost:5500`.
-The API CORS allowlist includes localhost ports 5500, 5501, and 3000. If you use another frontend port, add that exact origin to `allowedOrigins` in `backend/server.js`.
+### 5. Open the Frontend
 
-## Features
+Open `frontend/index.html` using VS Code Live Server.
 
-- Frontend fetches internship data from `GET /internships`.
-- Loading, error, empty, and retry states are visible.
-- Search and domain filter are supported (API records currently do not include a domain property, so the domain filter is a placeholder until domain is added to the database schema/API).
-- Apply Now opens a form with name, email, phone, and HTTPS resume URL.
-- Client-side validation provides quick feedback; backend independently validates every field.
-- Successful application submission returns an application ID.
-- SQLite uses prepared statements for user-controlled values.
-- Helmet security headers, CORS allowlist, JSON body size limit, and API rate limit are enabled.
+## API Endpoints
 
-## API endpoints
+| Method | Endpoint           | Description                      |
+| ------ | ------------------ | -------------------------------- |
+| GET    | `/internships`     | Retrieve internship listings     |
+| GET    | `/internships/:id` | Retrieve an internship by ID     |
+| POST   | `/applications`    | Submit an internship application |
+| POST   | `/internships`     | Create an internship             |
+| PUT    | `/internships/:id` | Update an internship             |
+| DELETE | `/internships/:id` | Delete an internship             |
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | API health message |
-| GET | `/internships?page=1&limit=5` | Paginated internship list |
-| GET | `/internships/:id` | Internship details |
-| POST | `/internships` | Create internship (required fields: title, company, location, description) |
-| PUT | `/internships/:id` | Update internship |
-| DELETE | `/internships/:id` | Delete internship |
-| POST | `/applications` | Submit an application |
+## Testing
 
-### Application request example
-
-```json
-{
-  "internshipId": 1,
-  "name": "Sample Applicant",
-  "email": "sample@example.com",
-  "phone": "9876543210",
-  "resumeUrl": "https://example.com/resume.pdf"
-}
-```
-
-## Run tests
+Backend tests were executed using:
 
 ```bash
-cd backend
 npm test
 ```
 
-Tests use Node's built-in test runner and a temporary SQLite database. They cover internship loading, security headers, invalid application validation, valid application submission, and invalid internship IDs.
+### Test Results
 
-## Security checklist
+| Test Case                                | Result |
+| ---------------------------------------- | ------ |
+| GET internships API and security headers | PASS   |
+| Invalid application validation           | PASS   |
+| Valid application submission             | PASS   |
+| Invalid internship ID validation         | PASS   |
 
-- [x] Server-side input validation (application and internship create/update)
-- [x] Client-side validation for user-friendly feedback
-- [x] Helmet security headers
-- [x] Rate limiting: 100 requests per IP per 15-minute window
-- [x] CORS origin allowlist for local frontend development
-- [x] JSON request body limited to 10 KB
-- [x] Parameterized SQLite queries (prepared statements)
-- [x] Resume URL restricted to HTTPS
-- [x] No applicant data is exposed through a public applications-list endpoint
-- [ ] For production: use HTTPS, configure trusted proxy correctly, store secrets in environment variables, add CAPTCHA/authentication and privacy/retention policy, and consider stricter rate limits.
+**Total Tests:** 4
+**Passed:** 4
+**Failed:** 0
 
-## Test report
+## Security Checklist
 
-Run `npm test` and attach the terminal output/screenshot to your submission. The test file is included; do not mark tests as passed until you run them locally.
+* [x] Helmet security headers
+* [x] Rate limiting
+* [x] CORS configuration
+* [x] Server-side validation
+* [x] Parameterized SQL queries
+* [x] Error handling
+* [x] Backend tests passed
 
-## Submission
+## Author
 
-Push this entire folder to one public GitHub repository and submit that single repository URL. Include your screenshots and actual test output if the task portal asks for evidence.
+**Shirisha Kokkera**
+
+GitHub: [shirisha63](https://github.com/shirisha63)
+
+## Conclusion
+
+This project demonstrates secure frontend and backend integration for an internship portal with API communication, application submission, validation, database operations, security features, and automated testing.
