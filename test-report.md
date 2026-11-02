@@ -13,13 +13,13 @@ npm install
 npm test
 ```
 
-| Test case | Expected result | Status |
-|---|---|---|
-| GET `/internships?page=1&limit=5` | 200 response, JSON data array | Pending local run |
-| Helmet security header | `X-Content-Type-Options: nosniff` | Pending local run |
-| Invalid application fields | 400 response | Pending local run |
-| Valid application submission | 201 response and application ID | Pending local run |
-| Invalid internship ID | 400 response | Pending local run |
+| Test case                    | Status |
+| ---------------------------- | ------ |
+| GET internships API          | Passed |
+| Helmet security header       | Passed |
+| Invalid application fields   | Passed |
+| Valid application submission | Passed |
+| Invalid internship ID        | Passed |
 
 ## Manual browser checks
 
