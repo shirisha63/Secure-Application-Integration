@@ -50,19 +50,17 @@ InternHub is an internship portal that connects a frontend application with a ba
 ## Project Structure
 
 ```text
-internship-portal-task3/
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-│
-├── backend/
-│   ├── server.js
-│   ├── database.js
-│   ├── seed.js
-│   ├── package.json
-│   └── tests/
-│
+Secure-Application-Integration/
+├── index.html
+├── style.css
+├── script.js
+├── server.js
+├── database.js
+├── seed.js
+├── api.test.js
+├── package.json
+├── test-report.md
+├── internship-portal-task3.zip
 └── README.md
 ```
 
@@ -74,10 +72,10 @@ internship-portal-task3/
 git clone https://github.com/shirisha63/Secure-Application-Integration.git
 ```
 
-### 2. Navigate to Backend
+### 2. Navigate to the Project Folder
 
 ```bash
-cd Secure-Application-Integration/backend
+cd Secure-Application-Integration
 ```
 
 ### 3. Install Dependencies
@@ -86,7 +84,15 @@ cd Secure-Application-Integration/backend
 npm install
 ```
 
-### 4. Start the Backend Server
+### 4. Initialize the Database
+
+If seed data is required, run:
+
+```bash
+node seed.js
+```
+
+### 5. Start the Backend Server
 
 ```bash
 npm start
@@ -96,9 +102,13 @@ The backend server runs at:
 
 `http://localhost:5000`
 
-### 5. Open the Frontend
+Keep the backend terminal running while testing the frontend locally.
 
-Open `frontend/index.html` using VS Code Live Server.
+### 6. Open the Frontend
+
+Open `index.html` using VS Code Live Server.
+
+**Note:** GitHub Pages hosts the frontend only. The backend must be deployed separately for internship data to load on the live website.
 
 ## API Endpoints
 
@@ -142,7 +152,13 @@ npm test
 * [x] Error handling
 * [x] Backend tests passed
 
-Website link:  https://shirisha63.github.io/Secure-Application-Integration/
+## Project Website
+
+[InternHub Internship Portal](https://shirisha63.github.io/Secure-Application-Integration/)
+
+## GitHub Repository
+
+[Secure Application Integration – GitHub](https://github.com/shirisha63/Secure-Application-Integration)
 
 ## Author
 
