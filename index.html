@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternHub - Find Your Internship</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="#home" class="logo">Intern<span>Hub</span></a>
+    <ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#internships">Internships</a></li><li><a href="#about">About</a></li></ul>
+    <a href="#internships" class="nav-btn">Explore Jobs</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content"><span class="tag">YOUR CAREER STARTS HERE</span><h1>Find Your Dream <span>Internship</span></h1><p>Discover exciting internship opportunities. Build your skills and start your professional journey.</p><a href="#internships" class="hero-btn">Explore Internships →</a></div>
+    <div class="hero-image"><div class="hero-card"><div class="hero-icon">💼</div><h3>Start Your Career</h3><p>Find opportunities and gain experience.</p><div class="hero-stats"><span>🚀 Learn</span><span>💡 Grow</span></div></div></div>
+  </section>
+  <section class="search-section" id="internships">
+    <h2>Explore Internships</h2><p>Find opportunities that match your interests.</p>
+    <div class="search-box"><label for="searchInput" class="visually-hidden">Search internships by role or company</label><input type="search" id="searchInput" placeholder="Search by role or company..."><button id="searchBtn" type="button">Search</button></div>
+    <div class="filter-section"><label for="domainFilter">Filter by Domain:</label><select id="domainFilter"><option value="all">All Domains</option><option>Web Development</option><option>Java</option><option>Python</option><option>Data Analytics</option><option>AI/ML</option><option>UI/UX Design</option></select></div>
+    <div id="statusMessage" role="status" aria-live="polite">Loading internships...</div>
+    <button id="retryBtn" class="retry-btn" type="button" hidden>Retry</button>
+    <div class="internship-container" id="internshipContainer"></div>
+  </section>
+  <section class="about-section" id="about"><h2>Why Choose InternHub?</h2><div class="about-container"><div class="about-card"><div>🎯</div><h3>Find Opportunities</h3><p>Discover internships matching your skills.</p></div><div class="about-card"><div>📚</div><h3>Learn New Skills</h3><p>Gain practical knowledge and experience.</p></div><div class="about-card"><div>🚀</div><h3>Build Your Career</h3><p>Take your first step towards your dream career.</p></div></div></section>
+</main>
+<footer><h3>InternHub</h3><p>Connecting students with internship opportunities.</p><p>© 2026 InternHub. All rights reserved.</p></footer>
+
+<div class="modal" id="applicationModal" role="dialog" aria-modal="true" aria-labelledby="applicationTitle" hidden>
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal" type="button" aria-label="Close application form">×</button>
+    <h2 id="applicationTitle">Apply for Internship</h2><p id="selectedInternship"></p>
+    <form id="applicationForm" novalidate>
+      <input type="hidden" id="internshipId" name="internshipId">
+      <label for="applicantName">Full Name</label><input id="applicantName" name="name" maxlength="80" required autocomplete="name">
+      <label for="applicantEmail">Email</label><input id="applicantEmail" name="email" type="email" maxlength="254" required autocomplete="email">
+      <label for="applicantPhone">Phone Number</label><input id="applicantPhone" name="phone" type="tel" maxlength="15" required autocomplete="tel" placeholder="10-digit mobile number">
+      <label for="resumeUrl">Resume URL (Google Drive / portfolio link)</label><input id="resumeUrl" name="resumeUrl" type="url" maxlength="500" required placeholder="https://...">
+      <button type="submit" id="submitApplication">Submit Application</button>
+      <p id="formMessage" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
