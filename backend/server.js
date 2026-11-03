@@ -36,7 +36,33 @@ const validResumeUrl = value => {
 };
 
 app.get("/", (req, res) => res.json({ success: true, message: "Internship API is running successfully!" }));
+// Health Check API
+app.get("/health", (req, res) => {
+  try {
+    db.prepare("SELECT 1").get();
 
+    res.status(200).json({
+      success: true,
+      status: "healthy",
+      message: "API and database are working",
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error("Health check failed:", error.message);
+
+    res.status(503).json({
+      success: false,
+      status: "unhealthy",
+      message: "Database connection failed"
+    });
+  }
+});
+
+// Request Logging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
+  next();
+});
 // GET internships with bounded pagination. SQL uses placeholders for user-controlled values.
 app.get("/internships", (req, res) => {
   const rawPage = Number(req.query.page || 1);
