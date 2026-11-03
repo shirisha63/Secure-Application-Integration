@@ -1,5 +1,5 @@
 // API URL. The frontend and API run locally on different ports.
-const API_BASE = "https://secure-application-integration-cskd.onrender.com";
+const API_BASE = "https://secure-application-integration-1.onrender.com";
 const internshipContainer = document.getElementById("internshipContainer");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
